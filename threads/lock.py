@@ -2,8 +2,8 @@ import threading
 
 shared_resource_with_lock = 0
 shared_resource_with_no_lock = 0
-COUNT = 1000000
-shared_resource_lock = threading.RLock()
+COUNT = 1000  # 1000000
+shared_resource_lock = threading.Lock()
 
 
 # LOCK MANAGEMENT
@@ -51,3 +51,37 @@ if __name__ == "__main__":
     t4.join()
     print("the value of shared variable with lock management is %s" % shared_resource_with_lock)
     print("the value of shared variable with race condition is %s" % shared_resource_with_no_lock)
+
+# import threading
+#
+#
+# def job1():
+#     global A
+#     lock.acquire()
+#     for i in range(50):
+#         A += 1
+#         print('job1', A)
+#     lock.release()
+#
+#
+# def job2():
+#     global A
+#     a = lock.acquire(timeout=2)
+#     for i in range(50):
+#         A += 10
+#         print('job2', A)
+#     lock.release()
+#
+#
+# if __name__ == '__main__':
+#     lock = threading.Lock()
+#     A = 0
+#     t1 = threading.Thread(target=job1)
+#     t2 = threading.Thread(target=job2)
+#     # print('locked: ', lock.locked())
+#     # print('end job1')
+#     t1.start()
+#     t2.start()
+
+# print('threads count', threading.active_count())
+# t2.join()

@@ -2,9 +2,6 @@ from threading import Thread
 import time
 
 
-exitFlag = 0
-
-
 class MyThread(Thread):
     def __init__(self, thread_id, name, counter):
         super().__init__()

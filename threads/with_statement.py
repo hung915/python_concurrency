@@ -1,18 +1,18 @@
 import threading
 import logging
 
-logging.basicConfig(level=logging.DEBUG, format='(%(threadName)-10s) %(message)s',)
+logging.basicConfig(level=logging.DEBUG, format='(%(threadName)-10s) %(message)s', )
 
 
 def threading_with(statement):
     with statement:
-        logging.debug('%s acquired via with' % statement)
+        logging.debug(f'{statement} acquired via with')
 
 
 def threading_not_with(statement):
     statement.acquire()
     try:
-        logging.debug('%s acquired directly' % statement )
+        logging.debug(f'{statement} acquired directly')
     finally:
         statement.release()
 
