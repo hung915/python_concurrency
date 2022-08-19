@@ -9,13 +9,14 @@ barrier = threading.Barrier(3)
 class MyThread(threading.Thread):
     def __init__(self, thread_id):
         threading.Thread.__init__(self)
-        self.thread_ID = thread_id
+        self.thread_id = thread_id
 
     def run(self):
-        print(str(self.thread_ID) + "\n")
+        print(str(self.thread_id) + "\n")
         print("Parties = " + str(barrier.parties) + "\n")
         print("n_waiting = " + str(barrier.n_waiting) + "\n")
         barrier.wait()
+        print(str(self.thread_id) + ' runs after barrier')
 
 
 thread1 = MyThread(100)
